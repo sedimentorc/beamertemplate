@@ -1,22 +1,9 @@
-[1] Config.pm:325> INFO - This is Biber 2.1
-[5] Config.pm:328> INFO - Logfile is 'prez.blg'
-[574] biber:276> INFO - === Mon Jan 11, 2016, 21:50:32
-[589] Biber.pm:334> INFO - Reading 'prez.bcf'
-[973] Biber.pm:646> INFO - Found 5 citekeys in bib section 0
-[1023] Biber.pm:2978> INFO - Processing section 0
-[1105] Biber.pm:3116> INFO - Looking for bibtex format file 'mybib.bib' for section 0
-[1113] bibtex.pm:1010> INFO - Decoding LaTeX character macros into UTF-8
-[1119] bibtex.pm:884> INFO - Found BibTeX data source 'mybib.bib'
-[1167] Utils.pm:146> WARN - BibTeX subsystem: /tmp/hgYBCOgdHM/mybib.bib_9313.utf8, line 42, warning: undefined macro "cup"
-[1170] Utils.pm:146> WARN - BibTeX subsystem: /tmp/hgYBCOgdHM/mybib.bib_9313.utf8, line 55, warning: undefined macro "hup"
-[1176] Utils.pm:146> WARN - The field 'publisher' in entry 'moraux' cannot be null, deleting it
-[1177] Utils.pm:146> WARN - The field 'publisher' in entry 'pines' cannot be null, deleting it
-[1541] UCollate.pm:66> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[1542] UCollate.pm:66> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[1542] Biber.pm:2855> INFO - Sorting list 'none' of type 'entry' with scheme 'none' and locale 'en-US'
-[1544] Biber.pm:2859> INFO - No sort tailoring available for locale 'en-US'
-[1553] bbl.pm:505> INFO - Writing 'prez.bbl' with encoding 'ascii'
-[1557] Utils.pm:146> WARN - The entry 'salam' has characters which cannot be encoded in 'ascii'. Recoding problematic characters into macros.
-[1559] Utils.pm:146> WARN - The entry 'moraux' has characters which cannot be encoded in 'ascii'. Recoding problematic characters into macros.
-[1561] bbl.pm:596> INFO - Output to prez.bbl
-[1562] Biber.pm:107> INFO - WARNINGS: 6
+[0] Config.pm:325> INFO - This is Biber 2.1
+[1] Config.pm:328> INFO - Logfile is 'prez.blg'
+[38] biber:276> INFO - === Tue Jan 12, 2016, 01:07:33
+[39] Biber.pm:334> INFO - Reading 'prez.bcf'
+[130] Biber.pm:646> INFO - Found 5 citekeys in bib section 0
+[153] Biber.pm:2978> INFO - Processing section 0
+[173] Biber.pm:3116> INFO - Looking for bibtex format file '../library.bib' for section 0
+[239] Utils.pm:162> ERROR - Cannot find '../library.bib'!
+[240] Biber.pm:111> INFO - ERRORS: 1

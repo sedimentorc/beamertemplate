@@ -1,7 +1,7 @@
 # Features
 
 - metropolis beamer
-- logos on title page
+- logos on title page. custom background image and color with transparency.
 - animate to embed videos frame by frame and autoplay
 - video playing externally
 - biblatex for citations
