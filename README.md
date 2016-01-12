@@ -7,6 +7,7 @@
 - biblatex for citations
 - journal abbreviation rules (manual input of rules into text files, but automated assembly into latex code, see genabrv.py)
 - custom biblatex commands for footnote citations
+- tikz demo
 - multi-page bibliography
 
 
