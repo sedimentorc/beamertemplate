@@ -1,0 +1,4 @@
+%fieldsource	fulltitle	shorttitle
+%field source can be journaltitle, booktitle, etc
+journaltitle	Organometallics	Org
+booktitle	Aristotle on Mind and the Senses	AMS

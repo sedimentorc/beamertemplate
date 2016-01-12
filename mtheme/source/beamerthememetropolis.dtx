@@ -1,0 +1,219 @@
+% \iffalse meta-comment -------------------------------------------------------
+% Copyright 2015 Matthias Vogelgesang and the LaTeX community. A full list of
+% contributors can be found at
+%
+%     https://github.com/matze/mtheme/graphs/contributors
+%
+% and the original template was based on the HSRM theme by Benjamin Weiss.
+%
+% This work is licensed under a Creative Commons Attribution-ShareAlike 4.0
+% International License (https://creativecommons.org/licenses/by-sa/4.0/).
+% ------------------------------------------------------------------------- \fi
+% \iffalse
+%<driver> \ProvidesFile{beamerthememetropolis.dtx}
+%<*package>
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerthememetropolis}[2015/12/04 Metropolis Beamer theme]
+%</package>
+%<driver> \documentclass{ltxdoc}
+%<driver> \usepackage{beamerthememetropolis}
+%<driver> \begin{document}
+%<driver> \DocInput{beamerthememetropolis.dtx}
+%<driver> \end{document}
+% \fi
+% \CheckSum{0}
+% \StopEventually{}
+% \iffalse
+%<*package>
+% ------------------------------------------------------------------------- \fi
+%
+% \subsection{\textsc{metropolis} main theme}
+%
+% The primary job of this package is to load the component sub-packages of the
+% \textsc{metropolis} theme and route the theme options accordingly. It also
+% provides some custom commands and environments for the user.
+%
+% Load the required packages.
+%    \begin{macrocode}
+\RequirePackage{etoolbox}
+\RequirePackage{pgfopts}
+%    \end{macrocode}
+%
+% \subsubsection{Options}
+%
+% \begin{macro}{\metroset}
+% First of all we define a macro for the user to set options.
+%    \begin{macrocode}
+\newcommand{\metroset}[1]{\pgfkeys{/metropolis/.cd,#1}}
+%    \end{macrocode}
+% \end{macro}
+%
+% Then we need to pass the unknown options to the sub-packages.
+%
+%    \begin{macrocode}
+\pgfkeys{/metropolis/.cd,
+  .search also={
+    /metropolis/inner,
+    /metropolis/outer,
+    /metropolis/color,
+  },
+%    \end{macrocode}
+%
+% We have to forwarded keys that affect multiple sub-packages manually.
+%
+%    \begin{macrocode}
+  block/.code=\pgfkeysalso{
+    inner/block=#1,
+    color/block=#1,
+  },
+}
+%    \end{macrocode}
+%
+% \begin{macro}{titleformat plain}
+% Control the titleformat of the plain title
+%    \begin{macrocode}
+\pgfkeys{
+  /metropolis/titleformat plain/.cd,
+    .is choice,
+    regular/.code={%
+      \let\@metropolis@plaintitleformat\@empty%
+      \setbeamerfont{plain title}{shape=\normalfont}%
+    },
+    smallcaps/.code={%
+      \let\@metropolis@plaintitleformat\@empty%
+      \setbeamerfont{plain title}{shape=\scshape}%
+    },
+    allsmallcaps/.code={%
+      \let\@metropolis@plaintitleformat\MakeLowercase%
+      \setbeamerfont{plain title}{shape=\scshape}%
+      \PackageWarning{beamerthememetropolis}{%
+        Be aware that titleformat plain=allsmallcaps can lead to problems%
+      }
+    },
+    allcaps/.code={%
+      \let\@metropolis@plaintitleformat\MakeUppercase%
+      \setbeamerfont{plain title}{shape=\normalfont}%
+      \PackageWarning{beamerthememetropolis}{%
+        Be aware that titleformat plain=allcaps can lead to problems%
+      }
+    },
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{titleformat}
+% Control the titleformat of every title type together
+%    \begin{macrocode}
+\pgfkeys{
+  /metropolis/titleformat/.code=\pgfkeysalso{
+      inner/titleformat title=#1,
+      inner/titleformat subtitle=#1,
+      inner/titleformat section=#1,
+      outer/titleformat frame=#1,
+      titleformat plain=#1,
+    }
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% For backwards compatibility with earlier betas of the theme, we implement
+% deprecated option names as aliases to the corresponding |key=value| options.
+%
+%    \begin{macrocode}
+\pgfkeys{/metropolis/.cd,
+  usetitleprogressbar/.code=\pgfkeysalso{outer/progressbar=frametitle},
+  noslidenumbers/.code=\pgfkeysalso{outer/numbering=none},
+  usetotalslideindicator/.code=\pgfkeysalso{outer/numbering=fraction},
+  nosectionslide/.code=\pgfkeysalso{inner/sectionpage=none},
+  darkcolors/.code=\pgfkeysalso{color/background=dark},
+  blockbg/.code=\pgfkeysalso{color/block=fill, inner/block=fill},
+}
+%    \end{macrocode}
+%
+% Set default values for options.
+%
+%    \begin{macrocode}
+\newcommand{\@metropolis@setdefaults}{
+  \pgfkeys{/metropolis/.cd,
+    titleformat plain=regular,
+  }
+}
+%    \end{macrocode}
+%
+%
+%
+% \subsubsection{Component sub-packages}
+%
+% Having processed the options, we can now load the component sub-packages of
+% the theme.
+%    \begin{macrocode}
+\useinnertheme{metropolis}
+\useoutertheme{metropolis}
+\usecolortheme{metropolis}
+\usefonttheme{metropolis}
+%    \end{macrocode}
+%
+% The |tol| theme for |pgfplots| is only loaded if |pgfplots| is used.
+%
+%    \begin{macrocode}
+\AtEndPreamble{%
+  \@ifpackageloaded{pgfplots}{%
+    \RequirePackage{pgfplotsthemetol}
+  }{}
+}
+%    \end{macrocode}
+%
+%
+%
+% \subsubsection{Custom commands}
+%
+% We define custom commands in this package as their proper usage may depend
+% on multiple sub-packages.
+%
+% \begin{macro}{\@metropolis@plaintitleformat}
+%   Define a hook to change the case format of the plain title.
+%    \begin{macrocode}
+\def\@metropolis@plaintitleformat#1{#1}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\plain}
+%   Creates a plain frame with dark background, suitable for displaying images
+%   or a few words.
+%    \begin{macrocode}
+\newcommand{\plain}[2][]{%
+  \begingroup
+    \setbeamercolor{background canvas}{
+      use=palette primary,
+      parent=palette primary
+    }
+    \begin{frame}[c]{#1}
+      \begin{center}
+        \usebeamercolor[fg]{palette primary}
+        \usebeamerfont{plain title}
+        \@metropolis@plaintitleformat{#2}
+      \end{center}
+    \end{frame}
+  \endgroup
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\mreducelistspacing}
+%    \begin{macrocode}
+\newcommand{\mreducelistspacing}{\vspace{-\topsep}}
+%    \end{macrocode}
+% \end{macro}
+%
+% Process package options
+%
+%    \begin{macrocode}
+\@metropolis@setdefaults
+\ProcessPgfOptions{/metropolis}
+%    \end{macrocode}
+%
+% \iffalse
+%</package>
+% \fi
+% \Finale
+\endinput

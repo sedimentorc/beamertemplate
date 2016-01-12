@@ -1,0 +1,451 @@
+%
+\documentclass{beamer}
+\usepackage{logreq}
+% needs to be high up to clear error
+% (/usr/share/texlive/texmf-dist/tex/latex/biblatex/biblatex2.sty
+% (/usr/share/texlive/texmf-dist/tex/latex/logreq/logreq.sty
+% ! Undefined control sequence.
+% l.163 \newrobustcmd
+%                    *{\DeclareLogreqContainer}{\lrq@defparser\lrq@container}
+
+%%------------------------------------------------
+%% style
+% Customize slide appearance
+%\mode<presentation>
+{
+  \usetheme{metropolis}
+  \setbeamercovered{transparent}
+}
+\setbeamertemplate{navigation symbols}{} % don't use navigation tools on slides
+
+
+%%------------------------------------------------
+%% notes
+%\usepackage{pgfpages}
+%\setbeameroption{show notes on second screen=left}
+%%------------------------------------------------
+%% fonts
+\usepackage[english]{babel} %set language to english
+%\usepackage[T1]{fontenc}
+%\usepackage{pxfonts}
+%\usepackage[]{helvet}
+%\usepackage{times}
+%\renewcommand\rmdefault{phv}% helvet
+
+%%------------------------------------------------
+%% packages
+\usepackage{amsmath,amssymb,amsfonts}
+
+
+
+%%% video packages
+%\usepackage[absolute,overlay]{textpos} 
+\usepackage{graphicx}
+%\usepackage{extrabeamercmds}    
+\usepackage[loop,controls,buttonsize=0.24cm,buttonbg=0.8,autoplay]{animate}
+
+
+%--------------------------
+%% colors
+%\usepackage{colortbl}
+%\definecolor{Golden}{RGB}{184,134,11}
+%\definecolor{tblcolorA}{rgb}{0.9 0.9 0.9} 
+%\definecolor{tblcolorB}{rgb}{0.7 0.7 0.9} 
+%\definecolor{colCONCLUSION}{rgb}{0.0 0.5 0.1 }
+%--------------------------
+
+
+
+
+% You can add any graphics to every slide by following command:
+% \logo{\includegraphics{logo.eps}}
+% Uncomment this, if you want the table of contents before each subsection.
+% However, to edit slides in TeXWord avoiding this feature is good idea.
+% \AtBeginSubsection[]
+% {
+%   \begin{frame}<beamer>
+%     \frametitle{Outline}
+%     \tableofcontents[currentsection,currentsubsection]
+%   \end{frame}
+% }
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command: 
+%\beamerdefaultoverlayspecification{<+->}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+%% BIBLIOGRAPHY SETTINGS
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%footnote citations
+\usepackage[citestyle=numeric-comp,hyperref=true, sorting=none,autocite=superscript]{biblatex}
+%%\def\bibfont{\footnotesize}
+%\usepackage{hyperref}
+%\usepackage[citestyle=numeric-comp,hyperref=true, sorting=none]{biblatex}
+%\usepackage[citestyle=numeric-comp, sorting=none]{biblatex}
+%% Define \citejournal
+%% http://tex.stackexchange.com/questions/26682/how-to-create-a-citejournal-citebooktitle-cite-command-in-biblatex
+\DeclareCiteCommand{\citejournal}
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+    \usebibmacro{journal}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\citebooktitle}
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+    \usebibmacro{booktitle}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\citeintitle}% Based on \citetitle from biblatex.def
+  {\boolfalse{citetracker}%
+   \boolfalse{pagetracker}%
+   \usebibmacro{prenote}}
+  {\ifciteindex
+     {\indexfield{indextitle}}
+     {}%
+   \iffieldundef{journaltitle}
+     {\iffieldundef{booktitle}
+        {\iffieldundef{maintitle}
+          {\printfield[citetitle]{labeltitle}}% Behave like \citetitle if no "main" title
+          {\printtext[maintitle]{\printfield[titlecase]{maintitle}}}}
+        {\printtext[booktitle]{\printfield[titlecase]{booktitle}}}}
+     {\printtext[journaltitle]{\printfield[titlecase]{journaltitle}}}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
+%%----------------------------------------------------
+%%Footnote
+%%% provides \ctfoot{Liu1998}
+%%% presently limited to up to four authors at once
+%%% Note, for variable number of inputs use \ctfoott (2 inputs), \ctfoottt (3 inputs), etc
+\newfont{\smallfont}{phvr at 5 pt}
+\newfont{\tablefont}{phvr at 7 pt}
+\newcommand{\cst}[1]{\textsuperscript{\cite{#1}}}
+\newcommand{\cstt}[2]{\textsuperscript{\cite{#1,#2}}}
+\newcommand{\csttt}[3]{\textsuperscript{\cite{#1,#2,#3}}}
+\newcommand{\ctauthoryear}[1]{\citeauthor{#1} [\citeyear{#1}]}
+\newcommand{\ctauthoryearsm}[1]{\smallfont \citeauthor{#1} [\citeyear{#1}]}
+\newcommand{\ctfoota}[1]{\cite{#1} \citeauthor{#1} (\citeyear{#1}). \citeintitle{#1}}
+\newcommand{\ctfoot}[1]{\let\thefootnote\relax\footnotetext{\smallfont \hskip-0.5em \ctfoota{#1}}}
+\newcommand{\ctfoott}[2]{\let\thefootnote\relax\footnotetext{\smallfont \hskip-0.5em \ctfoota{#1}; \ctfoota{#2} }}
+\newcommand{\ctfoottt}[3]{\let\thefootnote\relax\footnotetext{\smallfont \hskip-0.5em \ctfoota{#1}; \ctfoota{#2}; \ctfoota{#3} }}
+\newcommand{\ctfootttt}[4]{\let\thefootnote\relax\footnotetext{\smallfont \hskip-0.5em \ctfoota{#1}; \ctfoota{#2}; \ctfoota{#3}; \ctfoota{#4} }}
+\renewcommand{\footnotesize}{\fontsize{6}{8}\selectfont} 
+
+
+%\usepackage{hyperref} % has to be after hypersetup
+\usepackage{filecontents}
+
+\input{abbreviations.bib}
+% you can generate this file automatically. See the Makefile.
+% \begin{filecontents}{\abbreviations.bib}
+% %http://tex.stackexchange.com/questions/66549/short-titles-journal-abbreviations-etc-in-biblatex % a longer example
+% % https://github.com/gvdgdo/biblatex-lncs/blob/master/lncs.bbx
+% % 
+% % % How to do abbreviations manually
+% \DeclareSourcemap{%
+%   \maps[datatype=bibtex]{
+%     % Journal abbreviations
+%     \map{
+%       \step[fieldsource=journaltitle, match={Organometallics},
+%       replace={Org}]%
+%        \step[fieldsource=booktitle, match={Aristotle on Mind and the Senses},
+%       replace={ AMS}]%
+%        \step[fieldsource=booktitle, match={Aristotle on Mind and the Senses},
+%       replace={ AMS}]%      
+%     }
+%   }
+% }
+% \end{filecontents}
+
+\addbibresource{mybib.bib}
+
+
+
+
+
+% info
+\author{Author Name}
+\title{My Title}
+%\subtitle[My subtitle\hspace{2em}\insertframenumber/\inserttotalframenumber]{}
+\date{January 11, 2016} %leave out for today's date to be insterted
+\institute{Department of Physics \\ University of Pennsylvania}
+%==============================================================================
+
+
+% file paths
+\usepackage{ifthen}
+\newboolean{isLinux}
+\setboolean{isLinux}{true} %true Linux; false Win
+\ifthenelse{\boolean{isLinux}}{\graphicspath{{../},{./apollo17/}}}{\graphicspath{{beamer/}}}
+%\ifthenelse{\boolean{isLinux}}{\bibliography{../library} }{\bibliography{C:/Users/username/Documents/library}}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%==============================================================================
+\addtocounter{framenumber}{-1}
+%---------------------------------------
+% Title slide
+%---------------------------------------
+\begin{frame}[plain]
+\setbeamercolor{title}{fg=black}
+\maketitle
+\vspace{-3em}
+\begin{columns}
+        \column{0.25\textwidth}{
+                \includegraphics[width=0.94\textwidth]{logos/ncsu.png}
+        }
+        \column{0.50\textwidth}{}               
+        \column{0.25\textwidth}{
+                \begin{center}
+                \includegraphics[width=0.94\textwidth]{logos/NSF_logo.png}
+                {\tiny{ NSF DMR-0644743}}
+                \end{center}
+        }
+\end{columns}
+\end{frame} 
+
+%\input{section1.tex} 
+%\input{section2.tex} 
+%\input{section3.tex} 
+
+
+\begin{frame}
+  \frametitle{Table of Contents}
+  \tableofcontents
+  Click TeX Refresh (F5) to update table of contents.
+\end{frame}
+
+\section{Videos}
+
+%\ WORKS    
+\begin{frame}
+    \frametitle{Example 2}
+    
+    An example full frame video using the \textbf{basic syntax} is on this slide. This will play externally using default player.
+    
+    \vspace{20pt}
+    
+    \href{run:apollo17.avi}{\includegraphics[height=0.7\textheight]{outputFrame_16.jpeg}}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Example 2: Test Graphics Path}
+    
+    An example of a single frame video using the graphics path.
+    If this doesn't work, the next slide shouldn't work.
+    
+    \vspace{20pt}
+    
+    \includegraphics[height=0.7\textheight]{outputFrame_16.jpeg}
+\end{frame}
+
+
+
+\begin{frame}
+
+\frametitle{Example using animate}
+Here is an example using the animation package for playing within the pdf.
+\begin{figure}
+% here fps = 8, images are 1 through 42, show every image
+\animategraphics[loop,width=.7\linewidth,every=1]{8}{outputFrame_}{1}{42}
+\end{figure}
+\end{frame}
+
+
+% % DOES\ NOT\ WORK
+% \begin{frame}
+%     \frametitle{Example}
+%     
+%     An example full frame video using \textbf{commands from extrabeamercmds} is on the next slide. This does not work on Windows 10 or Ubuntu 15.10.
+% 
+% \fullFrameMovie[loop]{apollo17.avi}{apollo17.jpg}{\CopyrightText{Apollo 17, NASA}}
+% \end{frame}
+%     
+% 
+% 
+% %\ DOES\ NOT\ WORK
+% \begin{frame}
+%     \frametitle{Example 3}
+%     
+%     An example full frame video using \textbf{commands from extrabeamercmds} is on the next slide. This does not work on Windows 10 or Ubuntu 15.10.
+% 
+% 
+% % this assumes you have a .jpg named the same thing as your .avi
+% \fullFrameMovieAvi[noloop]{apollo17}{\CopyrightText{Apollo 17, NASA}}
+% \end{frame}
+%     
+
+\section{Citations}
+
+\begin{frame}
+\frametitle{Footnote Cite Demo}
+
+%\noindent
+\begin{itemize}
+\item articles:
+
+\citeintitle{einstein1905} versus \citejournal{einstein1905}. 
+We can also add abbreviated footnote citations\autocite{einstein1905}
+, which is good. We can cite it again and say \ctauthoryear{einstein1905} is an excellent paper. 
+Remember to call ctfoot if you want the bibliography to print out at the bottom\ctfoot{einstein1905}
+
+\citeintitle{yoon} versus \citejournal{yoon} 
+
+\item books:
+
+\citeintitle{salam} versus \citebooktitle{salam} 
+
+\citeintitle{moraux} versus \citebooktitle{moraux} 
+
+\citeintitle{pines} versus \citebooktitle{pines}
+\end{itemize}
+\end{frame}
+
+\section{General Features}
+
+\subsection{Outline}
+
+\begin{frame}
+  \frametitle{Presentation Outline}
+  \framesubtitle{Using sectioning commands}
+
+  You can use \texttt{\textbackslash section}
+  and \texttt{\textbackslash subsection} commands
+  to define outline of your presentation.
+
+  These commands must be appeared between frames.
+  Insert they manually in text source window. 
+
+  To take correct outline under \TeX-Word click F5 key.
+
+\end{frame}
+
+\subsection{Overlays}
+
+\begin{frame}
+  \frametitle{Simple Overlays}
+  \framesubtitle{Using pause command}
+
+  The easiest way to create overlays is in using 
+  the \texttt{\textbackslash pause} command.
+  Like following ...
+
+  \begin{itemize}
+    \item This item is before \texttt{pause} (look source window)\pause
+    \item If you don't see overlay read explanation below ...
+  \end{itemize}
+
+  Overlay expansion may be enabled/disabled 
+  in dialog opened by `Insert/Document Properties' menu command.
+
+  `\textit{Overlays Mode=\textbf{Handout}}' 
+   -- disables overlay expansion.
+
+  It is default setting of this template, 
+  because this mode is convenient at
+  first stage of developing slides.
+
+  `\textit{Overlays Mode=\textbf{Beamer}}' 
+   -- enables overlay expansion.
+
+  It is useful at final editing 
+  for handling overlays and for generating 
+  final slides in form of PDF file.
+
+\end{frame}
+
+\subsection{Advanced Features}
+
+\begin{frame}
+  \frametitle{Advanced Overlays}
+  \framesubtitle{Using more flexible overlay specifications}
+
+  Beamer includes more ways for handling 
+  overlays\dots
+  \begin{itemize}
+  \item using the \texttt{pause} command:
+    \begin{itemize}
+    \item
+      First item.
+      \pause
+    \item    
+      Second item.
+    \end{itemize}
+  \item
+    using overlay specifications:
+    \begin{itemize}
+    \item<3->
+      First item.
+    \item<4->
+      Second item.
+    \end{itemize}
+  \item
+    using the general \texttt{uncover} command:
+    \begin{itemize}
+      \uncover<5->{\item
+        First item.}
+      \uncover<6->{\item
+        Second item.}
+    \end{itemize}
+  \end{itemize}
+
+  To learn more about Beamer package 
+  read original documentation.
+
+\end{frame}
+
+\section{Main Talk}
+
+\subsection{It is only beginning}
+
+\begin{frame}
+  \frametitle{Blank Frame}
+  Body.
+\end{frame}
+
+\section*{Conclusion}
+
+\begin{frame}
+  \frametitle{Conclusion}
+
+  Clicking right mouse button 
+  (press+release without intermediate mouse moving) 
+  displays context menu
+  which have two commands specific for beamer package: 
+
+  \begin{itemize}
+  \item
+     \alert{Delete the Frame} -- removes current frame.
+  \item
+     \alert{Duplicate the Frame} -- easiest frame populating.
+  \end{itemize}
+
+  The button 
+  at left edge of text 
+  tool bar lets you insert blank slide in your presentation.
+
+\end{frame}
+
+
+\begin{frame}[allowframebreaks]
+\frametitle{Bibliography}
+%\topskip=2cm\advance\textheight by -2cm\enlargethispage{-1cm}
+%\defbibheading{empty}{}
+%{\Large Bibliography}
+\printbibliography
+\end{frame}
+
+
+\end{document}

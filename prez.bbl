@@ -1,0 +1,150 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.5 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \sortlist{none}{none}
+    \entry{einstein1905}{article}{}
+      \true{moreauthor}
+      \name{author}{1}{}{%
+        {{hash=3ebf53e52a3ce84f0ffb8553200a6a63}{Einstein}{E\bibinitperiod}{Albert}{A\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{0b6cb0887771f6d0d2c71039fa471889}
+      \strng{fullhash}{0b6cb0887771f6d0d2c71039fa471889}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Annalen der Physik}
+      \field{number}{10}
+      \field{title}{On the electrodynamics of moving bodies}
+      \field{volume}{17}
+      \field{year}{1905}
+      \field{pages}{891\bibrangedash 921}
+      \range{pages}{31}
+    \endentry
+    \entry{yoon}{article}{}
+      \name{author}{4}{}{%
+        {{hash=1cd180a384beaec90556c707792a915d}{Yoon}{Y\bibinitperiod}{Myeong\bibnamedelima S.}{M\bibinitperiod\bibinitdelim S\bibinitperiod}{}{}{}{}}%
+        {{hash=950fd963e3bfbd49bd0d9f642eff35e2}{Ryu}{R\bibinitperiod}{Dowook}{D\bibinitperiod}{}{}{}{}}%
+        {{hash=71fd64c0a1c4671289f011f4348fa0fa}{Kim}{K\bibinitperiod}{Jeongryul}{J\bibinitperiod}{}{}{}{}}%
+        {{hash=059700d26c0e03f45adb6fd658ae7a9d}{Ahn}{A\bibinitperiod}{Kyo\bibnamedelima Han}{K\bibinitperiod\bibinitdelim H\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{101d6ef5382cb69cc6631845cb80b10d}
+      \strng{fullhash}{6841672715c8a110839132ca8aa597a4}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Org}
+      \field{number}{10}
+      \field{title}{Palladium pincer complexes with reduced bond angle strain: efficient catalysts for the Heck reaction}
+      \field{volume}{25}
+      \field{year}{2006}
+      \field{pages}{2409\bibrangedash 2411}
+      \range{pages}{3}
+    \endentry
+    \entry{salam}{inproceedings}{}
+      \name{author}{1}{}{%
+        {{hash=5196fd7e08485dbc6a7dd05adc133fdf}{Salam}{S\bibinitperiod}{Abdus}{A\bibinitperiod}{}{}{}{}}%
+      }
+      \name{editor}{1}{}{%
+        {{hash=d0ec890e59163c24c111a08d2a4be982}{Svartholm}{S\bibinitperiod}{Nils}{N\bibinitperiod}{}{}{}{}}%
+      }
+      \list{location}{1}{%
+        {Stockholm}%
+      }
+      \list{publisher}{1}{%
+        {Almquist \& Wiksell}%
+      }
+      \strng{namehash}{5196fd7e08485dbc6a7dd05adc133fdf}
+      \strng{fullhash}{5196fd7e08485dbc6a7dd05adc133fdf}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booksubtitle}{Relativistic Groups and Analyticity}
+      \field{booktitle}{Elementary Particle Theory}
+      \field{booktitleaddon}{Proceedings of the Eighth Nobel Symposium}
+      \field{eventday}{19}
+      \field{eventendday}{25}
+      \field{eventendmonth}{05}
+      \field{eventendyear}{1968}
+      \field{eventmonth}{05}
+      \field{eventyear}{1968}
+      \field{title}{Weak and Electromagnetic Interactions}
+      \field{venue}{Aspen\"{a}sgarden, Lerum}
+      \field{year}{1968}
+      \field{pages}{367\bibrangedash 377}
+      \range{pages}{11}
+    \endentry
+    \entry{moraux}{inproceedings}{}
+      \name{author}{1}{}{%
+        {{hash=521f34dd2d9205cdfd39d5f6075187ee}{Moraux}{M\bibinitperiod}{Paul}{P\bibinitperiod}{}{}{}{}}%
+      }
+      \name{editor}{2}{}{%
+        {{hash=38a4f6a6d39e3d3be41e8476a072ce87}{Lloyd}{L\bibinitperiod}{G.\bibnamedelimi E.\bibnamedelimi R.}{G\bibinitperiod\bibinitdelim E\bibinitperiod\bibinitdelim R\bibinitperiod}{}{}{}{}}%
+        {{hash=138fd7ec19279f19a0248ad99fd12565}{Owen}{O\bibinitperiod}{G.\bibnamedelimi E.\bibnamedelimi L.}{G\bibinitperiod\bibinitdelim E\bibinitperiod\bibinitdelim L\bibinitperiod}{}{}{}{}}%
+      }
+      \list{location}{1}{%
+        {Cambridge}%
+      }
+      \strng{namehash}{521f34dd2d9205cdfd39d5f6075187ee}
+      \strng{fullhash}{521f34dd2d9205cdfd39d5f6075187ee}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{booktitle}{AMS}
+      \field{booktitleaddon}{Proceedings of the Seventh Symposium Aristotelicum}
+      \field{eventyear}{1975}
+      \field{shorttitle}{\emph{De Anima} dans la tradition gr\`{e}cque}
+      \field{subtitle}{Quelques aspects de l'interpretation du trait\'{e}, de Theophraste \`{a} Themistius}
+      \field{title}{Le \emph{De Anima} dans la tradition gr\`{e}cque}
+      \field{year}{1979}
+      \field{pages}{281\bibrangedash 324}
+      \range{pages}{44}
+    \endentry
+    \entry{pines}{incollection}{}
+      \name{author}{1}{}{%
+        {{hash=f6c65cf4858401d2e6b93d562bdd4bd1}{Pines}{P\bibinitperiod}{Shlomo}{S\bibinitperiod}{}{}{}{}}%
+      }
+      \name{editor}{1}{}{%
+        {{hash=acd4c72ab3813ceb1d86eb7681ff1d3f}{Twersky}{T\bibinitperiod}{Isadore}{I\bibinitperiod}{}{}{}{}}%
+      }
+      \list{location}{1}{%
+        {Cambridge, Mass.}%
+      }
+      \strng{namehash}{f6c65cf4858401d2e6b93d562bdd4bd1}
+      \strng{fullhash}{f6c65cf4858401d2e6b93d562bdd4bd1}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{booktitle}{Studies in Medieval Jewish History and Literature}
+      \field{indextitle}{Limitations of Human Knowledge According to Al-Farabi, ibn Bajja, and Maimonides, The}
+      \field{shorttitle}{Limitations of Human Knowledge}
+      \field{title}{The Limitations of Human Knowledge According to Al-Farabi, ibn Bajja, and Maimonides}
+      \field{year}{1979}
+      \field{pages}{82\bibrangedash 109}
+      \range{pages}{28}
+    \endentry
+  \endsortlist
+\endrefsection
+\endinput
+
